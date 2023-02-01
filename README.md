@@ -9,13 +9,19 @@ Python + GCP(Functions, Pub/Sub, Scheduler)
 
 基本は`gcloud functions deploy YOUR_FUNCTION_NAME```でデプロイ
 
-|prop|detail|
-|--|--|
-|--gen2 |第2世代にデプロイ。基本的には第2世代を利用|
-|--region=YOUR_REGION|デプロイのリージョン。基本はasia-northeast1で東京を指定|
-|--runtime=YOUR_RUNTIME|関数で利用する言語ランタイム。一覧は[こちら](https://cloud.google.com/functions/docs/concepts/execution-environment?hl=ja#runtimes)。Python3.11ならpython311を指定|
-|--source=YOUR_SOURCE_LOCATION|関数のソースコードの場所を指定。3パターン存在。|
-|--entry-point=YOUR_CODE_ENTRYPOINT||
+|prop|detail|point|
+|--|--|--|
+|--gen2 |第2世代にデプロイ。省略すると第1世代|基本的には第2世代を利用するので省略しない|
+|--region=YOUR_REGION|デプロイのリージョン|基本はasia-northeast1で東京を指定|
+|--runtime=YOUR_RUNTIME|関数で利用する言語ランタイム。一覧は[こちら](https://cloud.google.com/functions/docs/concepts/execution-environment?hl=ja#runtimes)|Python3.11ならpython311を指定|
+|--source=YOUR_SOURCE_LOCATION|関数のソースコードの場所を指定。3パターン存在。以下に詳細|本リポジトリであれば、---source=./ でOK|
+|--entry-point=YOUR_CODE_ENTRYPOINT|ソースコードにある関数のエントリポイント。|本リポジトリであれば、--entry-point=main |
+|--trigger-http|||
+|--trigger-topic=YOUR_PUBSUB_TOPIC|||
+|--trigger-bucket=YOUR_STORAGE_BUCKET|||
+|--trigger-event-filters=EVENTARC_EVENT_FILTERS|||
+|--trigger-event=EVENT_TYPE
+[--trigger-resource=RESOURCE]|||
 
 #### 補足：--sourceのURIについて
 
